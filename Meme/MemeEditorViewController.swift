@@ -129,9 +129,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         // To Save images after sharing
         memeToSave = save()
         
-        dismissViewControllerAnimated(true, completion: nil)
         presentViewController(activityViewController, animated: true, completion: nil)
-        
+
     }
     
     
@@ -239,6 +238,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         //To Hide both the Bottom ToolBar and Top Navigation Bar
         navigationController!.setNavigationBarHidden(true, animated: true)
         
+        tabBarController?.tabBar.hidden = true
+        
         // Provides a view of image
         UIGraphicsBeginImageContext(view.frame.size)
         view.drawViewHierarchyInRect(view.frame,
@@ -249,6 +250,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         // To Show both the Bottom ToolBar and Top Navigation Bar
         navigationController!.setNavigationBarHidden(false, animated: true)
+        tabBarController?.tabBar.hidden = false
         
         return memedImage
     }
