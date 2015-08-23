@@ -11,8 +11,8 @@ import UIKit
 class MemeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var collectionView: UIImageView!
-    @IBOutlet var topText: UITextField!
-    @IBOutlet var bottomText: UITextField!
+    @IBOutlet var topText: UILabel!
+    @IBOutlet var bottomText: UILabel!
     
     
 }

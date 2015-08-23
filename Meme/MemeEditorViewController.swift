@@ -143,7 +143,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                 
                 imagePickerView.image = image
                 imagePickerView.contentMode = .ScaleAspectFit
+
+                
                 dismissViewControllerAnimated(true, completion: nil)
+                
+                
                 
                 //Initially shows TextFields content after selection of photo is chosen
                 topTextField.hidden = false
@@ -260,6 +264,9 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         //Add the saved meme to the memes Array specified on the Application Delegate
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        
+        /*dismissViewControllerAnimated(true, completion: nil)*/
+        
         return meme
     }
     

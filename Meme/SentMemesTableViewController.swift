@@ -10,6 +10,8 @@ import UIKit
 
 class SentMemesTableViewController : UITableViewController {
     
+    @IBOutlet weak var memeEditButton: UIBarButtonItem!
+    
     var memes: [GenMeme]!
     
     override func viewDidLoad(){
@@ -19,18 +21,20 @@ class SentMemesTableViewController : UITableViewController {
         
         memes = applicationDelegate.memes
         
+        
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         memes = applicationDelegate.memes
+        tabBarController!.tabBar.hidden = true
         tableView!.reloadData()
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        var cell = self.tableView.dequeueReusableCellWithIdentifier("MemeTable") as! UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("MemeTable") as! UITableViewCell
         var tableMeme = memes[indexPath.row]
         
         cell.textLabel!.text = tableMeme.textHeader + "_" + tableMeme.textFootNote
@@ -47,15 +51,34 @@ class SentMemesTableViewController : UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        //Retrieve the selected meme based on method call
-        let selectedMeme =  memes[indexPath.row].memedImage
-        
         //Get a SentMemesTableViewController from the Storyboard
-        let sentMemeController = self.storyboard!.instantiateViewControllerWithIdentifier("SentMemesTableViewController") as! SentMemesTableViewController
+        let sentMemeController = storyboard!.instantiateViewControllerWithIdentifier("SavedMemeSelectionViewer") as! SavedMemeSelectionViewer
+        
+        //Retrieve the selected meme based on method call
+        let selectedMeme =  memes[indexPath.row]
+        sentMemeController.showMemeDetail = selectedMeme
+
         
         // Push the new controller onto the stack
-        self.navigationController!.pushViewController(sentMemeController, animated: true)
+        navigationController!.pushViewController(sentMemeController, animated: true)
         
     }
+    
+    @IBAction func memeEditing(sender: AnyObject) {
+    
+        tableView.allowsMultipleSelectionDuringEditing = true
+        tableView.setEditing(true, animated: true)
+        
+    
+    }
 
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
+            if editingStyle == UITableViewCellEditingStyle.Delete {
+                
+                /*SentMemesTableViewController.removeAtIndex(indexPath.row)*/
+                
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+        }
+        
+    }
 }

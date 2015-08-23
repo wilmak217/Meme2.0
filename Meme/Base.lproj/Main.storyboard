@@ -190,10 +190,10 @@
             </objects>
             <point key="canvasLocation" x="2616" y="-440"/>
         </scene>
-        <!--SentMemesTableViewController-->
+        <!--SAVED MEME VIEW -->
         <scene sceneID="XEw-Ui-4DU">
             <objects>
-                <viewController storyboardIdentifier="SentMemesTableViewController" title="SentMemesTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EbG-BG-i1N" customClass="SentMemesTableViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SavedMemeSelectionViewer" useStoryboardIdentifierAsRestorationIdentifier="YES" id="EbG-BG-i1N" customClass="SavedMemeSelectionViewer" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Yvr-vs-cnA"/>
                         <viewControllerLayoutGuide type="bottom" id="TzM-4C-Sjv"/>
@@ -225,6 +225,7 @@
                         <barButtonItem key="backBarButtonItem" title="Sent Memes" id="Nsl-b8-uQc"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="selectedFromSentMemes" destination="5h2-jT-Tws" id="0GS-ew-Th8"/>
                         <outlet property="view" destination="5h2-jT-Tws" id="DhH-am-WF8"/>
                     </connections>
                 </viewController>
@@ -272,49 +273,52 @@
                                     <rect key="frame" x="0.0" y="0.0" width="113" height="181"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Xob-Pn-Ngq">
-                                            <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="2" y="148" width="110" height="30"/>
-                                            </variation>
-                                        </textField>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zhl-DS-Z4H">
-                                            <rect key="frame" x="0.0" y="-30" width="97" height="30"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="2" y="4" width="110" height="30"/>
-                                            </variation>
-                                        </textField>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lat-Vb-kTo">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
                                                 <rect key="frame" x="2" y="36" width="110" height="110"/>
                                             </variation>
                                         </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YdP-Hw-I5d">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="2" y="8" width="110" height="21"/>
+                                            </variation>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cel-al-xUM">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="widthClass=compact" fixedFrame="YES">
+                                                <rect key="frame" x="2" y="152" width="110" height="21"/>
+                                            </variation>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <variation key="default">
                                     <mask key="subviews">
-                                        <exclude reference="Xob-Pn-Ngq"/>
-                                        <exclude reference="Zhl-DS-Z4H"/>
                                         <exclude reference="lat-Vb-kTo"/>
+                                        <exclude reference="YdP-Hw-I5d"/>
+                                        <exclude reference="cel-al-xUM"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
-                                        <include reference="Xob-Pn-Ngq"/>
-                                        <include reference="Zhl-DS-Z4H"/>
                                         <include reference="lat-Vb-kTo"/>
+                                        <include reference="YdP-Hw-I5d"/>
+                                        <include reference="cel-al-xUM"/>
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <outlet property="bottomText" destination="Xob-Pn-Ngq" id="tkF-26-4u8"/>
+                                    <outlet property="bottomText" destination="cel-al-xUM" id="CEy-Dl-LrP"/>
                                     <outlet property="collectionView" destination="lat-Vb-kTo" id="aM0-fQ-po6"/>
-                                    <outlet property="topText" destination="Zhl-DS-Z4H" id="kAS-mO-KOn"/>
+                                    <outlet property="topText" destination="YdP-Hw-I5d" id="rkk-bb-0Zs"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -361,6 +365,11 @@
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Table View" image="table" id="zCo-re-pup"/>
                     <navigationItem key="navigationItem" title="Sent Memes" id="MWi-nf-a1M">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="4Jf-uW-Zx7">
+                            <connections>
+                                <action selector="memeEditing:" destination="csn-oW-Qqf" id="roI-9Z-dCP"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Svp-Xw-Jd5">
                             <connections>
                                 <segue destination="QJE-fA-TIi" kind="presentation" id="PEc-6Z-Z3w"/>
@@ -368,6 +377,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="memeEditButton" destination="4Jf-uW-Zx7" id="8TD-du-AEJ"/>
                         <segue destination="EbG-BG-i1N" kind="show" identifier="SentMemesTableViewController" id="XAP-Oy-Nxh"/>
                     </connections>
                 </tableViewController>
@@ -437,6 +447,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6PV-Vc-v1A"/>
+        <segue reference="PEc-6Z-Z3w"/>
     </inferredMetricsTieBreakers>
 </document>
