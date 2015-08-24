@@ -299,26 +299,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         tabBarController?.tabBar.hidden = false
         
     }
-    
-    /*func deletePhotos(sender:UIButton) {
-    
-        let i: Int = (sender.layer.valueForKey(("index")) as! Int
-        
-            for item in collectionView!.visibleCells() as! [PhotoCell]{
-  
-            var indexPath: NSIndexPath = collectionView!.indexPathForCell(item as PhotoCell)!
-            
-            if indexPath.row == i{
-            
-                photoList[indexPath.section].removeAtIndex(i)
-                collectionView!.reloadData()
-                return
-            
-            }
-        }
-    
-    }*/
-    
 
 }
 

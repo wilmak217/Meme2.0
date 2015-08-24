@@ -65,19 +65,37 @@ class SentMemesTableViewController : UITableViewController {
     
     @IBAction func memeEditing(sender: AnyObject) {
     
-        tableView.allowsMultipleSelectionDuringEditing = true
-        tableView.setEditing(true, animated: true)
-        
-    
+            tableView.allowsMultipleSelectionDuringEditing = true
+            tableView.setEditing(true, animated: true)
+
     }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
             if editingStyle == UITableViewCellEditingStyle.Delete {
                 
-                /*tableView.removeAtIndex(indexPath.row)*/
+                /*tableView..removeAtIndex(indexPath.row)*/
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
         
     }
+    
+    
+    /*func deletePhotos(sender:UIButton) {
+    
+        let i: Int = sender.layer.valueForKey(("index")) as! Int
+    
+        for item in collectionView!.visibleCells() as! [PhotoCell]{
+    
+        var indexPath: NSIndexPath = collectionView!.indexPathForCell(item as PhotoCell)!
+    
+            if indexPath.row == i{
+    
+                photoList[indexPath.section].removeAtIndex(i)
+                collectionView!.reloadData()
+                return
+    
+            }
+        }
+    }*/
 }

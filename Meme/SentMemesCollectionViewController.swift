@@ -47,13 +47,9 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
         
         var cell = collectionView.dequeueReusableCellWithReuseIdentifier("MemeCollectionViewCell", forIndexPath: indexPath) as! MemeCollectionViewCell
         
-        let collectionMeme = memes[indexPath.item]
-        
+        let collectionMeme = memes[indexPath.row]
         cell.topText.text = collectionMeme.textHeader
-        
-        cell.collectionView!.image = collectionMeme.pickedImage
-        
-        cell.bottomText.text = collectionMeme.textFootNote
+        cell.collectionView?.image = collectionMeme.memedImage
         
         return cell
         
@@ -64,12 +60,11 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
     
         let detailController = storyboard!.instantiateViewControllerWithIdentifier("SavedMemeSelectionViewer") as! SavedMemeSelectionViewer
         
-        detailController.showMemeDetail.textHeader 
-        detailController.showMemeDetail.memedImage
-        detailController.showMemeDetail.textFootNote
+        detailController.showMemeDetail = memes[indexPath.item]
         
         navigationController!.pushViewController(detailController, animated: true)
     
     }
+
     
 }

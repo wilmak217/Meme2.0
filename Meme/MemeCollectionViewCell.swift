@@ -12,7 +12,6 @@ class MemeCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet var collectionView: UIImageView!
     @IBOutlet var topText: UILabel!
-    @IBOutlet var bottomText: UILabel!
-    
+
     
 }
