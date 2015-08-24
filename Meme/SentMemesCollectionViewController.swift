@@ -64,8 +64,9 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
     
         let detailController = storyboard!.instantiateViewControllerWithIdentifier("SavedMemeSelectionViewer") as! SavedMemeSelectionViewer
         
-        
-        /*detailController.memes = memes[indexPath.row]*/
+        detailController.showMemeDetail.textHeader 
+        detailController.showMemeDetail.memedImage
+        detailController.showMemeDetail.textFootNote
         
         navigationController!.pushViewController(detailController, animated: true)
     

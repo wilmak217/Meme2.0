@@ -57,11 +57,10 @@ class SentMemesTableViewController : UITableViewController {
         //Retrieve the selected meme based on method call
         let selectedMeme =  memes[indexPath.row]
         sentMemeController.showMemeDetail = selectedMeme
-
         
         // Push the new controller onto the stack
         navigationController!.pushViewController(sentMemeController, animated: true)
-        
+        tabBarController?.tabBar.hidden = false
     }
     
     @IBAction func memeEditing(sender: AnyObject) {
@@ -75,7 +74,7 @@ class SentMemesTableViewController : UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
             if editingStyle == UITableViewCellEditingStyle.Delete {
                 
-                /*SentMemesTableViewController.removeAtIndex(indexPath.row)*/
+                /*tableView.removeAtIndex(indexPath.row)*/
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }

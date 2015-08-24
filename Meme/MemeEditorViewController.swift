@@ -17,11 +17,11 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var pickPhotoFromLibrary: UIBarButtonItem!
-    
+    @IBOutlet weak var bottomToolBar: UIToolbar!
     // object variable declaration to initiate save capability
     var enableSave = false
-    /*var dateStamp = NSDate()*/
-    var memeToSave : GenMeme! // Meme struct object variable declaration
+    
+    /*var memeToSave : GenMeme! // Meme struct object variable declaration*/
     var memedImage :  UIImage! // Meme image object variable declaration
     
     // Variable assignment of UITextField Font type and style parameters to be used by initializeMemeEditableParameters method
@@ -92,10 +92,28 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     @IBAction func cancelMeme(sender: AnyObject) {
         
-        topTextField.text = "Top"
-        bottomTextField.text = "Bottom"
-        dismissViewControllerAnimated(true, completion: nil)
+        if imagePickerView.image != nil {
+            
+            imagePickerView.image = nil
+            topTextField.text = "TOP"
+            bottomTextField.text = "BOTTOM"
+            shareButton.enabled = false
+            enableSave = false
+        }
         
+        if((UIApplication.sharedApplication().delegate as! AppDelegate).memes.count == 0){
+        
+            noMemeSent()
+            
+        }
+        else if((UIApplication.sharedApplication().delegate as! AppDelegate).memes.count) > 0{
+        
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let activeVC = storyboard.instantiateViewControllerWithIdentifier("Main") as! UIViewController
+            presentViewController(activeVC, animated: true, completion: nil)
+        }
+        
+        /*dismissViewControllerAnimated(true, completion: nil)*/
     }
     
     @IBAction func textFieldEditor(sender: AnyObject) {
@@ -115,7 +133,6 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
             return
         }
         
-        
     }
     
     @IBAction func memeSharing(sender: AnyObject) {
@@ -123,14 +140,15 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         enableSave = true
         
         /* Declaration of an Activity View Controller, (a view controller that allows for you to SMS, Email, Facebook, Twitter, etc functionality)*/
+        
         let toShareAMeme = generationOfMemedImage()
         let activityViewController : UIActivityViewController = UIActivityViewController(activityItems: [toShareAMeme], applicationActivities: nil)
         
         // To Save images after sharing
-        memeToSave = save()
+        save()
         
         presentViewController(activityViewController, animated: true, completion: nil)
-
+        
     }
     
     
@@ -143,11 +161,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
                 
                 imagePickerView.image = image
                 imagePickerView.contentMode = .ScaleAspectFit
-
                 
                 dismissViewControllerAnimated(true, completion: nil)
-                
-                
                 
                 //Initially shows TextFields content after selection of photo is chosen
                 topTextField.hidden = false
@@ -168,6 +183,14 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         let okAction = UIAlertAction(title: "OK", style:.Default, handler: nil)
         alertVC.addAction(okAction)
         presentViewController(alertVC, animated: true, completion: nil)
+    }
+    
+    func noMemeSent(){
+        let alertController = UIAlertController(title: "No Memes", message: "You did not send previous Meme", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "Ok", style: .Default, handler: nil)
+        alertController.addAction(okAction)
+        presentViewController(alertController, animated: true, completion: nil)
+    
     }
 
     func textFieldDidBeginEditing(textField: UITextField) {
@@ -240,6 +263,7 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     
     func generationOfMemedImage() -> UIImage {
         //To Hide both the Bottom ToolBar and Top Navigation Bar
+        bottomToolBar.hidden = true
         navigationController!.setNavigationBarHidden(true, animated: true)
         
         tabBarController?.tabBar.hidden = true
@@ -254,21 +278,46 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         // To Show both the Bottom ToolBar and Top Navigation Bar
         navigationController!.setNavigationBarHidden(false, animated: true)
-        tabBarController?.tabBar.hidden = false
+        
         
         return memedImage
     }
     
-    func save() -> GenMeme{
-        let meme =  GenMeme(textHeader: topTextField.text, textFootNote: bottomTextField.text, pickedImage: imagePickerView.image, memedImage: memedImage)
+    func save() {
+        let meme =  GenMeme(textHeader: topTextField.text, textFootNote: bottomTextField.text, pickedImage: imagePickerView.image, memedImage: generationOfMemedImage())
         
-        //Add the saved meme to the memes Array specified on the Application Delegate
+        /*Add the saved meme to the memes Array specified on the Application Delegate
+        Note: This is normally done in three lines of code but is all implemented as one 
+        line as performed below, in doing so accomplishes the same thing. Typically it is implemented like so:
+        
+        let object = UIApplication.sharedApplication().delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)*/
+        
         (UIApplication.sharedApplication().delegate as! AppDelegate).memes.append(meme)
+        bottomToolBar.hidden = false
+        tabBarController?.tabBar.hidden = false
         
-        /*dismissViewControllerAnimated(true, completion: nil)*/
-        
-        return meme
     }
+    
+    /*func deletePhotos(sender:UIButton) {
+    
+        let i: Int = (sender.layer.valueForKey(("index")) as! Int
+        
+            for item in collectionView!.visibleCells() as! [PhotoCell]{
+  
+            var indexPath: NSIndexPath = collectionView!.indexPathForCell(item as PhotoCell)!
+            
+            if indexPath.row == i{
+            
+                photoList[indexPath.section].removeAtIndex(i)
+                collectionView!.reloadData()
+                return
+            
+            }
+        }
+    
+    }*/
     
 
 }

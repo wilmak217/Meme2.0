@@ -178,6 +178,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="bottomTextField" destination="bPg-Tj-bfX" id="cMo-7t-5Za"/>
+                        <outlet property="bottomToolBar" destination="RVW-CE-cRi" id="Jcv-d4-GHD"/>
                         <outlet property="cameraButton" destination="vID-9K-JBa" id="GnK-cw-MJ8"/>
                         <outlet property="cancelButton" destination="Zc5-6G-Hi2" id="Kqu-Tw-JGM"/>
                         <outlet property="imagePickerView" destination="JcE-WZ-liP" id="FHA-m3-Fqm"/>
@@ -236,7 +237,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="K3g-oN-EAq">
             <objects>
-                <tabBarController id="s8c-mU-DOn" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="Main" id="s8c-mU-DOn" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="29S-M8-hN9">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -255,13 +256,13 @@
         <!--Sent Memes-->
         <scene sceneID="Ni9-UD-XEW">
             <objects>
-                <collectionViewController id="656-cn-des" customClass="SentMemesCollectionViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController clearsSelectionOnViewWillAppear="NO" id="656-cn-des" customClass="SentMemesCollectionViewController" customModule="Meme" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="LgK-xW-VMf">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="myU-Yz-OoO">
-                            <size key="itemSize" width="113" height="181"/>
-                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="itemSize" width="111" height="110"/>
+                            <size key="headerReferenceSize" width="50" height="50"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
@@ -270,70 +271,56 @@
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="113" height="181"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="111" height="110"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lat-Vb-kTo">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="2" y="36" width="110" height="110"/>
+                                                <rect key="frame" x="1" y="0.0" width="110" height="110"/>
                                             </variation>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YdP-Hw-I5d">
-                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="2" y="8" width="110" height="21"/>
-                                            </variation>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cel-al-xUM">
-                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
-                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="highlightedColor"/>
-                                            <variation key="widthClass=compact" fixedFrame="YES">
-                                                <rect key="frame" x="2" y="152" width="110" height="21"/>
-                                            </variation>
-                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <variation key="default">
                                     <mask key="subviews">
                                         <exclude reference="lat-Vb-kTo"/>
-                                        <exclude reference="YdP-Hw-I5d"/>
-                                        <exclude reference="cel-al-xUM"/>
                                     </mask>
                                 </variation>
                                 <variation key="widthClass=compact">
                                     <mask key="subviews">
                                         <include reference="lat-Vb-kTo"/>
-                                        <include reference="YdP-Hw-I5d"/>
-                                        <include reference="cel-al-xUM"/>
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <outlet property="bottomText" destination="cel-al-xUM" id="CEy-Dl-LrP"/>
                                     <outlet property="collectionView" destination="lat-Vb-kTo" id="aM0-fQ-po6"/>
-                                    <outlet property="topText" destination="YdP-Hw-I5d" id="rkk-bb-0Zs"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
+                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Hca-bE-l6r">
+                            <rect key="frame" x="0.0" y="64" width="600" height="50"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="656-cn-des" id="uji-SN-AnT"/>
                             <outlet property="delegate" destination="656-cn-des" id="OFH-Z2-RqM"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CIU-lr-8Wf"/>
+                        <barButtonItem systemItem="trash" id="icC-yH-eBc"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CZr-g2-wR4"/>
+                    </toolbarItems>
                     <navigationItem key="navigationItem" title="Sent Memes" id="6ss-Eh-NTW">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="eHA-rD-fC7"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GTc-lW-TQC">
                             <connections>
                                 <segue destination="QJE-fA-TIi" kind="presentation" id="6PV-Vc-v1A"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="flowLayout" destination="myU-Yz-OoO" id="OG4-7d-RlM"/>
                     </connections>
@@ -345,7 +332,7 @@
         <!--Sent Memes-->
         <scene sceneID="pEA-ac-Kcb">
             <objects>
-                <tableViewController id="csn-oW-Qqf" customClass="SentMemesTableViewController" customModule="Meme" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SentMemesTableViewController" clearsSelectionOnViewWillAppear="NO" id="csn-oW-Qqf" customClass="SentMemesTableViewController" customModule="Meme" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="52P-jt-MFi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
