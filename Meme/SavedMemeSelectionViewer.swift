@@ -8,12 +8,11 @@
 
 import UIKit
 
-class SavedMemeSelectionViewer : UIViewController {
+class SavedMemeSelectionViewer : UIViewController, UITableViewDelegate {
 
     var showMemeDetail: GenMeme!
     
     @IBOutlet weak var selectedFromSentMemes: UIImageView!
-    
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

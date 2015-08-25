@@ -189,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3255" y="-926"/>
+            <point key="canvasLocation" x="3178.5" y="-521"/>
         </scene>
         <!--SAVED MEME VIEW -->
         <scene sceneID="XEw-Ui-4DU">
@@ -222,11 +222,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="Ase-Z7-eB8"/>
-                        <barButtonItem systemItem="trash" id="sa0-3a-tcA"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="wQt-tv-39E"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="SAVED MEME VIEW " id="Wci-5j-IHf">
                         <barButtonItem key="backBarButtonItem" title="Sent Memes" id="Nsl-b8-uQc"/>
                     </navigationItem>
@@ -318,16 +314,11 @@
                             </collectionViewCell>
                         </cells>
                     </collectionView>
-                    <toolbarItems>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CIU-lr-8Wf"/>
-                        <barButtonItem systemItem="trash" id="icC-yH-eBc"/>
-                        <barButtonItem style="plain" systemItem="flexibleSpace" id="CZr-g2-wR4"/>
-                    </toolbarItems>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" title="Sent Memes" id="6ss-Eh-NTW">
                         <barButtonItem key="leftBarButtonItem" enabled="NO" systemItem="edit" id="eHA-rD-fC7">
                             <connections>
-                                <action selector="memeEditing:" destination="656-cn-des" id="SCR-IA-pLj"/>
-                                <segue destination="vXZ-lx-hvc" kind="show" identifier="backToEditorToo" id="GMr-KS-Kdi"/>
+                                <action selector="memeEdit:" destination="656-cn-des" id="zgI-Z0-o9Z"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="GTc-lW-TQC">
@@ -344,7 +335,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jd2-Ew-pw7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="517.5" y="539"/>
+            <point key="canvasLocation" x="517.5" y="-56"/>
         </scene>
         <!--Sent Memes-->
         <scene sceneID="pEA-ac-Kcb">
@@ -371,8 +362,7 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="MWi-nf-a1M">
                         <barButtonItem key="leftBarButtonItem" enabled="NO" systemItem="edit" id="4Jf-uW-Zx7">
                             <connections>
-                                <action selector="memeEditing:" destination="csn-oW-Qqf" id="roI-9Z-dCP"/>
-                                <segue destination="vXZ-lx-hvc" kind="show" identifier="backToEditor" id="kEb-ED-N3X"/>
+                                <action selector="memeEdit:" destination="csn-oW-Qqf" id="ahj-5J-hfn"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Svp-Xw-Jd5">
@@ -452,7 +442,6 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GMr-KS-Kdi"/>
         <segue reference="6PV-Vc-v1A"/>
     </inferredMetricsTieBreakers>
 </document>

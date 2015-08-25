@@ -67,17 +67,14 @@ class SentMemesTableViewController : UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
             if editingStyle == UITableViewCellEditingStyle.Delete {
                 
-                /*tableView..removeAtIndex(indexPath.row)*/
-                
+                memes.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         }
         
     }
-    
-    @IBAction func memeEditing(sender: AnyObject) {
-        
-        performSegueWithIdentifier("backToEditor", sender: self)
+    @IBAction func memeEdit(sender: AnyObject) {
+        // Upon pressing Edit button, change the Bar Button to a Trash can and past the action to memeEdit
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "memeEdit:")
         
     }
-    
 }

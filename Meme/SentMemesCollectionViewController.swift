@@ -27,13 +27,12 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
         flowLayout.itemSize = CGSizeMake(wDim, hDim)
         
         memeEditButton.enabled = true
-    
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        tabBarController?.tabBar.hidden = false
+        tabBarController?.tabBar.hidden = true
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         
         memes = applicationDelegate.memes
@@ -69,10 +68,12 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
     
     }
 
-    @IBAction func memeEditing(sender: AnyObject) {
-    
-        performSegueWithIdentifier("backToEditorToo", sender: self)
-    
+    @IBAction func memeEdit(sender: AnyObject) {
+        
+        // Upon pressing Edit button, change the Bar Button to a Trash can and past the action to memeEdit
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "memeEdit:")
+        
     }
+
     
 }
