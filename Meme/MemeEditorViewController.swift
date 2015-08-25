@@ -288,7 +288,8 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
         
         /*Add the saved meme to the memes Array specified on the Application Delegate
         Note: This is normally done in three lines of code but is all implemented as one 
-        line as performed below, in doing so accomplishes the same thing. Typically it is implemented like so:
+        line as performed below, in doing so accomplishes the same thing. 
+        Typically it is implemented like so:
         
         let object = UIApplication.sharedApplication().delegate
         let appDelegate = object as! AppDelegate

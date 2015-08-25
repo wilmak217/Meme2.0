@@ -65,8 +65,11 @@ class SentMemesTableViewController : UITableViewController {
     
     @IBAction func memeEditing(sender: AnyObject) {
     
-            tableView.allowsMultipleSelectionDuringEditing = true
-            tableView.setEditing(true, animated: true)
+            /*tableView.allowsMultipleSelectionDuringEditing = true
+            tableView.setEditing(true, animated: true)*/
+        /*let controller = navigationController!.viewControllers[1] as! UIViewController
+        navigationController?.popToViewController(controller, animated: true)*/
+        performSegueWithIdentifier("backToEditor", sender: self)
 
     }
 

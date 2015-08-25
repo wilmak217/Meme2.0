@@ -189,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2616" y="-440"/>
+            <point key="canvasLocation" x="2898" y="-926"/>
         </scene>
         <!--SAVED MEME VIEW -->
         <scene sceneID="XEw-Ui-4DU">
@@ -360,6 +360,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="4Jf-uW-Zx7">
                             <connections>
                                 <action selector="memeEditing:" destination="csn-oW-Qqf" id="roI-9Z-dCP"/>
+                                <segue destination="vXZ-lx-hvc" kind="show" identifier="backToEditor" id="kEb-ED-N3X"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Svp-Xw-Jd5">
@@ -439,6 +440,7 @@
         <image name="table" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6PV-Vc-v1A"/>
+        <segue reference="kEb-ED-N3X"/>
+        <segue reference="PEc-6Z-Z3w"/>
     </inferredMetricsTieBreakers>
 </document>
