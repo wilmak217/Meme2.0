@@ -36,6 +36,7 @@ class SentMemesTableViewController : UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         var cell = tableView.dequeueReusableCellWithIdentifier("MemeTable") as! UITableViewCell
+        
         var tableMeme = memes[indexPath.row]
         
         cell.textLabel!.text = tableMeme.textHeader + "_" + tableMeme.textFootNote
@@ -61,20 +62,29 @@ class SentMemesTableViewController : UITableViewController {
         
         // Push the new controller onto the stack
         navigationController!.pushViewController(sentMemeController, animated: true)
-        tabBarController?.tabBar.hidden = false
-    }
-
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
-            if editingStyle == UITableViewCellEditingStyle.Delete {
-                
-                memes.removeAtIndex(indexPath.row)
-                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        }
         
-    }
-    @IBAction func memeEdit(sender: AnyObject) {
         // Upon pressing Edit button, change the Bar Button to a Trash can and past the action to memeEdit
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "memeEdit:")
         
+        tabBarController?.tabBar.hidden = false
     }
+
+    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+            if editingStyle == UITableViewCellEditingStyle.Delete {
+                
+                
+                let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                memes = applicationDelegate.memes
+                memes.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Automatic)
+        }
+    }
+    
+    @IBAction func memeEdit(sender: AnyObject) {
+        
+
+        
+    }
+    
 }

@@ -27,6 +27,7 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
         flowLayout.itemSize = CGSizeMake(wDim, hDim)
         
         memeEditButton.enabled = true
+        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -53,6 +54,7 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
         cell.topText.text = collectionMeme.textHeader
         cell.collectionView?.image = collectionMeme.memedImage
         
+        
         return cell
         
     }
@@ -65,15 +67,21 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
         detailController.showMemeDetail = memes[indexPath.item]
         
         navigationController!.pushViewController(detailController, animated: true)
-    
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "memeEdit:")
+        
+        let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        memes = applicationDelegate.memes
+        memes.removeAtIndex(indexPath.row)
+        
+        
     }
 
     @IBAction func memeEdit(sender: AnyObject) {
-        
         // Upon pressing Edit button, change the Bar Button to a Trash can and past the action to memeEdit
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Trash, target: self, action: "memeEdit:")
+
+        
+        collectionView!.reloadData()
         
     }
-
     
 }
