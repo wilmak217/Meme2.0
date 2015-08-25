@@ -21,6 +21,7 @@ class SentMemesTableViewController : UITableViewController {
         
         memes = applicationDelegate.memes
         
+        memeEditButton.enabled = true
         
     }
     
@@ -62,16 +63,6 @@ class SentMemesTableViewController : UITableViewController {
         navigationController!.pushViewController(sentMemeController, animated: true)
         tabBarController?.tabBar.hidden = false
     }
-    
-    @IBAction func memeEditing(sender: AnyObject) {
-    
-            /*tableView.allowsMultipleSelectionDuringEditing = true
-            tableView.setEditing(true, animated: true)*/
-        /*let controller = navigationController!.viewControllers[1] as! UIViewController
-        navigationController?.popToViewController(controller, animated: true)*/
-        performSegueWithIdentifier("backToEditor", sender: self)
-
-    }
 
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath){
             if editingStyle == UITableViewCellEditingStyle.Delete {
@@ -83,22 +74,10 @@ class SentMemesTableViewController : UITableViewController {
         
     }
     
+    @IBAction func memeEditing(sender: AnyObject) {
+        
+        performSegueWithIdentifier("backToEditor", sender: self)
+        
+    }
     
-    /*func deletePhotos(sender:UIButton) {
-    
-        let i: Int = sender.layer.valueForKey(("index")) as! Int
-    
-        for item in collectionView!.visibleCells() as! [PhotoCell]{
-    
-        var indexPath: NSIndexPath = collectionView!.indexPathForCell(item as PhotoCell)!
-    
-            if indexPath.row == i{
-    
-                photoList[indexPath.section].removeAtIndex(i)
-                collectionView!.reloadData()
-                return
-    
-            }
-        }
-    }*/
 }

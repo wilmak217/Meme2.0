@@ -18,8 +18,10 @@ class MemeEditorViewController: UIViewController, UIImagePickerControllerDelegat
     @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var pickPhotoFromLibrary: UIBarButtonItem!
     @IBOutlet weak var bottomToolBar: UIToolbar!
+    
     // object variable declaration to initiate save capability
     var enableSave = false
+    
     
     /*var memeToSave : GenMeme! // Meme struct object variable declaration*/
     var memedImage :  UIImage! // Meme image object variable declaration

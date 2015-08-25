@@ -12,6 +12,7 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
 
     var memes: [GenMeme]!
     
+    @IBOutlet weak var memeEditButton: UIBarButtonItem!
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
     
     override func viewDidLoad(){
@@ -24,6 +25,8 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
         flowLayout.minimumInteritemSpacing = space
         flowLayout.minimumLineSpacing = space
         flowLayout.itemSize = CGSizeMake(wDim, hDim)
+        
+        memeEditButton.enabled = true
     
     }
     
@@ -66,5 +69,10 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
     
     }
 
+    @IBAction func memeEditing(sender: AnyObject) {
+    
+        performSegueWithIdentifier("backToEditorToo", sender: self)
+    
+    }
     
 }
