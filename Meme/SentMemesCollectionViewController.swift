@@ -33,19 +33,12 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        tabBarController?.tabBar.hidden = true
+        tabBarController?.tabBar.hidden = false
         
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         
         memes = applicationDelegate.memes
         collectionView!.reloadData()
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        tabBarController?.tabBar.hidden = false
-    
-    
     }
     
 
