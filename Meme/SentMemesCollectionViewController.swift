@@ -33,12 +33,21 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        tabBarController?.tabBar.hidden = true
+        tabBarController?.tabBar.hidden = false
+        
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         
         memes = applicationDelegate.memes
         collectionView!.reloadData()
     }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.tabBar.hidden = true
+    
+    
+    }
+    
 
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
@@ -76,7 +85,7 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
         
     }
 
-    @IBAction func memeEdit(sender: AnyObject) {
+    @IBAction func memeEdit(sender: UIBarButtonItem) {
         // Upon pressing Edit button, change the Bar Button to a Trash can and past the action to memeEdit
 
         
