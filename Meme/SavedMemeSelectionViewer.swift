@@ -17,14 +17,14 @@ class SavedMemeSelectionViewer : UIViewController, UITableViewDelegate {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         
-        tabBarController?.tabBar.hidden = false
+        tabBarController?.tabBar.hidden = true
         selectedFromSentMemes.image = showMemeDetail.memedImage
         
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        tabBarController?.tabBar.hidden = true
+        tabBarController?.tabBar.hidden = false
     
     }
 

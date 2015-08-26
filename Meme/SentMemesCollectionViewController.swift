@@ -33,7 +33,7 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(true)
         
-        tabBarController?.tabBar.hidden = false
+        tabBarController?.tabBar.hidden = true
         
         let applicationDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
         
@@ -43,7 +43,7 @@ class SentMemesCollectionViewController : UICollectionViewController, UICollecti
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        tabBarController?.tabBar.hidden = true
+        tabBarController?.tabBar.hidden = false
     
     
     }
